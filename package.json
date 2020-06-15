@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "node-mirai-sdk": "^0.1.27",
+    "ts-node": "^8.10.2",
+    "typescript": "^3.9.5"
+  },
+  "devDependencies": {
+    "@types/node": "^14.0.13"
+  }
+}

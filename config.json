@@ -1,0 +1,10 @@
+{
+  "host": "",
+  "port": 0,
+  "authKey": "",
+  "qq": 0,
+  "enableWebsocket": false,
+  "groupId": 0,
+  "imgDir": "",
+  "suffix": ""
+}
