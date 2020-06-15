@@ -2,9 +2,20 @@ import { hourReport } from "./time";
 import { getMsg } from "./msg";
 import config from "./config.json";
 
-const { host, port, authKey, qq, enableWebsocket, groupId } = config;
+const {
+  host,
+  port,
+  authKey,
+  qq,
+  banqq,
+  enableWebsocket,
+  groupId,
+  banTime,
+} = config;
 
 const Mirai = require("node-mirai-sdk");
+
+const { Plain } = Mirai.MessageComponent;
 
 //服务端设置(*)
 const bot = new Mirai({
@@ -28,7 +39,19 @@ bot.onSignal("verified", async () => {
 });
 
 //接受消息,发送消息(*)
-bot.onMessage((message: any) => {});
+bot.onMessage((message: any) => {
+  const { messageChain } = message;
+  let msg = "";
+  messageChain.forEach((chain: any) => {
+    if (chain.type === "Plain") msg += Plain.value(chain);
+  });
+  console.log(msg);
+  if (msg.includes("禁言")) {
+    bot.setGroupMute(groupId, banqq, banTime);
+  } else if (msg.includes("解禁")) {
+    bot.setGroupUnmute(groupId, banqq);
+  }
+});
 
 /* 开始监听消息(*)
  * 'all' - 监听好友和群

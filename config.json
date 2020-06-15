@@ -6,5 +6,7 @@
   "enableWebsocket": false,
   "groupId": 0,
   "imgDir": "",
-  "suffix": ""
+  "suffix": "",
+  "banqq": 0,
+  "banTime": 0
 }
